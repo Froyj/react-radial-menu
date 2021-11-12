@@ -1,45 +1,37 @@
-function getRandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
-
-function setRandomColor() {
-  $("#colorpad").css("background-color", getRandomColor());
-}
-
-const Slice = ({ angle, startAngle, endAngle, largeRadius, smallRadius }) => {
-  let largeArcStartX = largeRadius * Math.cos(startAngle);
-  let largeArcStartY = largeRadius * Math.sin(startAngle);
-  let largeArcEndX = largeRadius * Math.cos(endAngle);
-  let largeArcEndY = largeRadius * Math.sin(endAngle);
-  let smallArcStartX = smallRadius * Math.cos(startAngle);
-  let smallArcStartY = smallRadius * Math.sin(startAngle);
-  let smallArcEndX = smallRadius * Math.cos(endAngle);
-  let smallArcEndY = smallRadius * Math.sin(endAngle);
-
-  if ((startAngle <= 0) && (startAngle <= 180)) {
-    largeArcStartY = -largeArcStartY
-    smallArcStartY = -smallArcStartY
-    largeArcEndY = -largeArcEndY
-    smallArcEndY = -smallArcEndY
-  }
-
+const Slice = ({
+  id,
+  angle,
+  startAngle,
+  largeRadius,
+  smallRadius,
+  offset = [0, 0],
+  color = '#8a8a8a',
+}) => {
+  const [offsetX, offsetY] = offset;
+  let largeArcStartX = largeRadius * Math.cos(startAngle) - offsetX;
+  let largeArcStartY = largeRadius * Math.sin(startAngle) - offsetY;
+  let largeArcEndX = largeRadius * Math.cos(startAngle + angle) - offsetX;
+  let largeArcEndY = largeRadius * Math.sin(startAngle + angle) - offsetY;
+  let smallArcStartX = smallRadius * Math.cos(startAngle) - offsetX;
+  let smallArcStartY = smallRadius * Math.sin(startAngle) - offsetY;
+  let smallArcEndX = smallRadius * Math.cos(startAngle + angle) - offsetX;
+  let smallArcEndY = smallRadius * Math.sin(startAngle + angle) - offsetY;
   return (
+    <>
     <path
       d={`
-        M 0,0 ${smallArcStartX},${smallArcStartY} 
-        L${largeArcStartX},${largeArcStartY}
-        A${largeRadius},${largeRadius},0,0,1,${largeArcEndX},${largeArcEndY}
-        L${largeArcEndX},${largeArcEndY} ${smallArcEndX},${smallArcEndY}
-        A${smallRadius},${smallRadius},0,0,0,${smallArcStartX},${smallArcStartY}
-        Z
-        `}
-      fill={getRandomColor()}
-    />
+      M${smallArcStartX},${-smallArcStartY} 
+      L${largeArcStartX},${-largeArcStartY}
+      A${largeRadius},${largeRadius},0,0,0,${largeArcEndX},${-largeArcEndY}
+      L${largeArcEndX},${-largeArcEndY} ${smallArcEndX},${-smallArcEndY}
+      A${smallRadius},${smallRadius},0,0,1,${smallArcStartX},${-smallArcStartY}Z
+      `}
+      fill={color}
+      onClick={() => {
+        console.log('banane');
+      }}
+      />
+      </>
   );
 };
 

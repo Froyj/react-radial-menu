@@ -2,3 +2,42 @@
   text-align: center;
   height: auto;
 }
+
+.disabled {
+
+  transform: scale(0, 0);
+  transition: transform 0.4s;
+}
+
+.disabled g{
+  transform-origin: 0 0;
+  transition: transform-origin 0.4s;
+}
+
+.enabled {
+  transform: scale(1, 1);
+  transition: transform 0.4s;
+}
+
+.enabled g{
+  transform-origin: 200 200;
+  transition: transform-origin 0.4s;
+  transition: transform 0.4s;
+}
+
+path:hover {
+  fill: hsl(199, 50%, 50%);
+  transform: scale(1.05, 1.05);
+  transform: translate(-10, -10);
+  transition: transform 0.4s;
+}
+
+
+
+/* 
+path:nth-of-type(n) {
+  fill: black;
+}
+ */
+
+

@@ -5,7 +5,6 @@ import Slice from './components/Slice'
 import SvgCircle from './components/SvgCircle'
 
 function App() {
-
   return (
     <div className="App">
       <h2>
