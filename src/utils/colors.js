@@ -7,7 +7,7 @@ function getRandomColor() {
   return color;
 }
 
-function getDerivedColor(color, id) {
+function getDerivedColor(color, id=0) {
   const alpha = 1 - (id / 7)
   const hexStrings = color.split('');
   const hexColors = [

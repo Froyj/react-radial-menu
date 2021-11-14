@@ -6,6 +6,7 @@ const Slice = ({
   smallRadius,
   offset = [0, 0],
   color = '#8a8a8a',
+  children = [],
 }) => {
   const [offsetX, offsetY] = offset;
   let largeArcStartX = largeRadius * Math.cos(startAngle) - offsetX;
@@ -18,20 +19,20 @@ const Slice = ({
   let smallArcEndY = smallRadius * Math.sin(startAngle + angle) - offsetY;
   return (
     <>
-    <path
-      d={`
+      <path
+        d={`
       M${smallArcStartX},${-smallArcStartY} 
       L${largeArcStartX},${-largeArcStartY}
       A${largeRadius},${largeRadius},0,0,0,${largeArcEndX},${-largeArcEndY}
       L${largeArcEndX},${-largeArcEndY} ${smallArcEndX},${-smallArcEndY}
       A${smallRadius},${smallRadius},0,0,1,${smallArcStartX},${-smallArcStartY}Z
       `}
-      fill={color}
-      onClick={() => {
-        console.log('banane');
-      }}
+        fill={color}
+        onClick={() => {
+          console.log('banane');
+        }}
       />
-      </>
+    </>
   );
 };
 

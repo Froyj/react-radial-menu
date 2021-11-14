@@ -3,7 +3,7 @@
   height: auto;
 }
 
-.disabled {
+/* .disabled {
 
   transform: scale(0, 0);
   transition: transform 0.4s;
@@ -23,7 +23,7 @@
   transform-origin: 200 200;
   transition: transform-origin 0.4s;
   transition: transform 0.4s;
-}
+} */
 
 path:hover {
   fill: hsl(199, 50%, 50%);
