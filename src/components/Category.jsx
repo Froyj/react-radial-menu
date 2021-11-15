@@ -1,13 +1,25 @@
 import React from 'react';
-import { getDerivedColor } from '../utils/colors';
 
-const Category = ({ children, color }) => {
-  const childrenWithProps = React.Children.map(children, (child) => {
+const Category = ({ children, color, startAngle, totalAngle, smallRadius, largeRadius }) => {
+  const totalSlices = children.length;
+  const sliceAngle = totalAngle / totalSlices;
+  let angleToStartSliceFrom = startAngle;
+
+  const childrenWithProps = React.Children.map((children), (child, i) => {
+    const sliceStartAngle = angleToStartSliceFrom;
+    angleToStartSliceFrom += sliceAngle;
     // Checking isValidElement is the safe way and avoids a typescript
     // error too.
+    console.log(child)
     if (React.isValidElement(child)) {
       return React.cloneElement(child, {
-        color: getDerivedColor(color, child.props.id),
+        id: i,
+        baseColor: color,
+        angle: sliceAngle,
+        startAngle: sliceStartAngle,
+        smallRadius,
+        largeRadius
+
       });
     }
     return child;

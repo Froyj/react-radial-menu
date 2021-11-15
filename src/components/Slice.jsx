@@ -1,3 +1,5 @@
+import { getDerivedColor } from "../utils/colors";
+
 const Slice = ({
   id,
   angle,
@@ -5,7 +7,7 @@ const Slice = ({
   largeRadius,
   smallRadius,
   offset = [0, 0],
-  color = '#8a8a8a',
+  baseColor = '#8a8a8a',
   children = [],
 }) => {
   const [offsetX, offsetY] = offset;
@@ -27,7 +29,7 @@ const Slice = ({
       L${largeArcEndX},${-largeArcEndY} ${smallArcEndX},${-smallArcEndY}
       A${smallRadius},${smallRadius},0,0,1,${smallArcStartX},${-smallArcStartY}Z
       `}
-        fill={color}
+        fill={getDerivedColor(baseColor, id)}
         onClick={() => {
           console.log('banane');
         }}

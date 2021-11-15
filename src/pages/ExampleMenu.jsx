@@ -5,7 +5,7 @@ import { faFile, faCog, faStar, faGamepad, faGasPump } from '@fortawesome/free-s
 
 const ExampleMenu = () => {
   return (
-    <RadialMenu radius={200} >
+    <RadialMenu smallRadius={90} largeRadius={140}  >
       <Category color="#36A736">
         <Slice label={'Create a new file'} icons={faFile}/>
         <Slice label={'Create a new file'} icons={faCog}/>
@@ -16,6 +16,10 @@ const ExampleMenu = () => {
         <Slice label={'Create a new file'} icons={faStar}/>
         <Slice label={'Create a new file'} icons={faGasPump}/>
         <Slice label={'Create a new file'} icons={faFile}/>
+      </Category>
+      <Category color="#ca002c">
+        <Slice label={'Create a new file'} icons={faGamepad}/>
+        <Slice label={'Create a new file'} icons={faStar}/>
       </Category>
     </RadialMenu>   
   );

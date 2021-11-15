@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Slice from './Slice';
 import { getDerivedColor } from '../utils/colors';
 
